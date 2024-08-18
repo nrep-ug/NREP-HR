@@ -1,5 +1,6 @@
 import React from 'react';
 import { Form, Card } from 'react-bootstrap';
+import { BoldFormLabel } from '../../customComponents/reactBootstrap';
 
 const WorkDetails = ({ hrStyle, formData, handleChange, staffCategories }) => {
     return (
@@ -7,7 +8,7 @@ const WorkDetails = ({ hrStyle, formData, handleChange, staffCategories }) => {
             <Card.Footer>WORK DETAILS</Card.Footer>
             <Card.Body>
                 <Form.Group controlId="formStaffID">
-                    <Form.Label>Staff ID</Form.Label>
+                    <BoldFormLabel required={true}>Staff ID</BoldFormLabel>
                     <Form.Control
                         type="text"
                         name="staffID"
@@ -20,7 +21,7 @@ const WorkDetails = ({ hrStyle, formData, handleChange, staffCategories }) => {
                 <hr style={hrStyle} />
 
                 <Form.Group controlId="formStaffCategory">
-                    <Form.Label>Staff Category</Form.Label>
+                    <BoldFormLabel required={true}>Staff Category</BoldFormLabel>
                     <Form.Control
                         as="select"
                         name="staffCategory"
@@ -50,7 +51,7 @@ const WorkDetails = ({ hrStyle, formData, handleChange, staffCategories }) => {
                 <hr style={hrStyle} />
 
                 <Form.Group controlId="formRoles">
-                    <Form.Label>Staff Responsibilities</Form.Label>
+                    <BoldFormLabel required={true}>Staff Responsibilities</BoldFormLabel>
                     <Form.Control
                         as="textarea"
                         name="roles"
@@ -63,7 +64,7 @@ const WorkDetails = ({ hrStyle, formData, handleChange, staffCategories }) => {
                 <hr style={hrStyle} />
 
                 <Form.Group controlId="formNationalID">
-                    <Form.Label>National ID or Passport Number</Form.Label>
+                    <BoldFormLabel>National ID or Passport Number</BoldFormLabel>
                     <Form.Control
                         type="text"
                         name="NIN"
@@ -75,7 +76,7 @@ const WorkDetails = ({ hrStyle, formData, handleChange, staffCategories }) => {
                 <hr style={hrStyle} />
 
                 <Form.Group controlId="formTIN">
-                    <Form.Label>Tax Identification (TIN)</Form.Label>
+                    <BoldFormLabel>Tax Identification (TIN)</BoldFormLabel>
                     <Form.Control
                         type="number"
                         name="TIN"
@@ -87,7 +88,7 @@ const WorkDetails = ({ hrStyle, formData, handleChange, staffCategories }) => {
                 <hr style={hrStyle} />
 
                 <Form.Group controlId="formNSSF">
-                    <Form.Label>National Social Security Fund (NSSF) Number</Form.Label>
+                    <BoldFormLabel>National Social Security Fund (NSSF) Number</BoldFormLabel>
                     <Form.Control
                         type="number"
                         name="NSSF"

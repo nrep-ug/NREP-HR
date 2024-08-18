@@ -1,25 +1,19 @@
 import React from "react";
 import WorkForm from './components/other/WorkForm.js'
-import {
-  BrowserRouter as Router,
-  Routes,
-  Route,
-} from "react-router-dom";
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import CreateProject from './pages/CreateProject.js';
 import "./App.css";
 
 
 
 function App() {
-
   return (
     <Router>
-      <div className="App">
-        <div>
-          <Routes>
-            <Route path="/staff-form" element={<WorkForm />} />
-          </Routes>
-        </div>
-      </div>
+      <Routes>
+        <Route path="/create-project" element={<CreateProject />} />
+        {/* Add other routes here */}
+        <Route path="/staff-form" element={<WorkForm />} />
+      </Routes>
     </Router>
   );
 }

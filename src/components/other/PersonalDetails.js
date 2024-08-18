@@ -16,7 +16,7 @@ const PersonalDetails = ({ hrStyle, formData, handleChange, handleDateChange, ha
                 <Row>
                     <Col md={6} className="mb-3">
                         <Form.Group controlId="formFirstName">
-                            <BoldFormLabel>First Name <b style={{ color: "red" }}>*</b></BoldFormLabel>
+                            <BoldFormLabel required={true}>First Name</BoldFormLabel>
                             <Form.Control
                                 type="text"
                                 name="firstName"
@@ -28,7 +28,7 @@ const PersonalDetails = ({ hrStyle, formData, handleChange, handleDateChange, ha
                     </Col>
                     <Col md={6} className="mb-3">
                         <Form.Group controlId="formSurName">
-                            <BoldFormLabel>Surname <b style={{ color: "red" }}>*</b></BoldFormLabel>
+                            <BoldFormLabel required={true}>Surname</BoldFormLabel>
                             <Form.Control
                                 type="text"
                                 name="surName"
@@ -40,7 +40,7 @@ const PersonalDetails = ({ hrStyle, formData, handleChange, handleDateChange, ha
                     </Col>
                     <Col md={6} className="mb-3">
                         <Form.Group controlId="formMiddleName">
-                            <BoldFormLabel>Middle Name</BoldFormLabel>
+                            <BoldFormLabel required={false}>Middle Name</BoldFormLabel>
                             <Form.Control
                                 type="text"
                                 name="middleName"
@@ -54,7 +54,7 @@ const PersonalDetails = ({ hrStyle, formData, handleChange, handleDateChange, ha
                 <hr style={hrStyle} />
 
                 <Form.Group controlId="formGender">
-                    <BoldFormLabel>Gender <b style={{ color: "red" }}>*</b></BoldFormLabel>
+                    <BoldFormLabel required={true}>Gender</BoldFormLabel>
                     <Form.Control
                         as="select"
                         name="gender"
@@ -74,7 +74,7 @@ const PersonalDetails = ({ hrStyle, formData, handleChange, handleDateChange, ha
                 <hr style={hrStyle} />
 
                 <Form.Group controlId="formNationality">
-                    <BoldFormLabel>Nationality <b style={{ color: "red" }}>*</b></BoldFormLabel>
+                    <BoldFormLabel required={true}>Nationality</BoldFormLabel>
                     <div className='mt-2'>Selected Country: {formData.nationality}</div>
                     <Select
                         options={countries}
@@ -87,7 +87,7 @@ const PersonalDetails = ({ hrStyle, formData, handleChange, handleDateChange, ha
                 <hr style={hrStyle} />
 
                 <Form.Group controlId="formDOB">
-                    <BoldFormLabel>Date of Birth <b style={{ color: "red" }}>*</b></BoldFormLabel>
+                    <BoldFormLabel required={true}>Date of Birth</BoldFormLabel>
                     <div>Selected Date: <i>{formattedDOB}</i></div> {/* Render formatted date */}
                     <Calendar
                         selected={formData.dob}

@@ -1,6 +1,7 @@
 import React from 'react';
 import { Form, Col, Row, Card } from 'react-bootstrap';
 import PhoneInput from 'react-phone-input-2';
+import { BoldFormLabel } from '../../customComponents/reactBootstrap';
 
 const ContactDetails = ({ hrStyle, formData, handleChange, handlePhoneChange }) => {
     return (
@@ -10,7 +11,7 @@ const ContactDetails = ({ hrStyle, formData, handleChange, handlePhoneChange }) 
                 <Row>
                     <Col md={6} className="mb-3">
                         <Form.Group controlId="formEmail1">
-                            <Form.Label>Email 1 <b style={{ color: "red" }}>*</b></Form.Label>
+                            <BoldFormLabel required={true}>Email 1</BoldFormLabel>
                             <Form.Control
                                 type="email"
                                 name="email1"
@@ -23,7 +24,7 @@ const ContactDetails = ({ hrStyle, formData, handleChange, handlePhoneChange }) 
 
                     <Col md={6} className="mb-3">
                         <Form.Group controlId="formEmail2">
-                            <Form.Label>Email 2</Form.Label>
+                            <BoldFormLabel>Email 2</BoldFormLabel>
                             <Form.Control
                                 type="email"
                                 name="email2"
@@ -34,7 +35,7 @@ const ContactDetails = ({ hrStyle, formData, handleChange, handlePhoneChange }) 
                     </Col>
                     <Col md={6} className="mb-3">
                         <Form.Group controlId="formEmail3">
-                            <Form.Label>Email 3</Form.Label>
+                            <BoldFormLabel>Email 3</BoldFormLabel>
                             <Form.Control
                                 type="email"
                                 name="email3"
@@ -50,7 +51,7 @@ const ContactDetails = ({ hrStyle, formData, handleChange, handlePhoneChange }) 
                 <Row>
                     <Col md={6} className="mb-3">
                         <Form.Group controlId="formPhone1">
-                            <Form.Label>Phone 1 <b style={{ color: "red" }}>*</b></Form.Label>
+                            <BoldFormLabel required={true}>Phone 1</BoldFormLabel>
                             <PhoneInput
                                 country={'ug'}
                                 value={formData.phone1}
@@ -61,7 +62,7 @@ const ContactDetails = ({ hrStyle, formData, handleChange, handlePhoneChange }) 
                     </Col>
                     <Col md={6} className="mb-3">
                         <Form.Group controlId="formPhone2">
-                            <Form.Label>Phone 2</Form.Label>
+                            <BoldFormLabel>Phone 2</BoldFormLabel>
                             <PhoneInput
                                 country={'ug'}
                                 value={formData.phone2}
@@ -71,7 +72,7 @@ const ContactDetails = ({ hrStyle, formData, handleChange, handlePhoneChange }) 
                     </Col>
                     <Col md={6} className="mb-3">
                         <Form.Group controlId="formPhone3">
-                            <Form.Label>Phone 3</Form.Label>
+                            <BoldFormLabel>Phone 3</BoldFormLabel>
                             <PhoneInput
                                 country={'ug'}
                                 value={formData.phone3}
@@ -84,7 +85,7 @@ const ContactDetails = ({ hrStyle, formData, handleChange, handlePhoneChange }) 
                 <hr style={hrStyle} />
 
                 <Form.Group controlId="formAddress1">
-                    <Form.Label>Address 1 <b style={{ color: "red" }}>*</b></Form.Label>
+                    <BoldFormLabel required={true}>Address 1</BoldFormLabel>
                     <Form.Control
                         type="text"
                         name="address1"
@@ -94,7 +95,7 @@ const ContactDetails = ({ hrStyle, formData, handleChange, handlePhoneChange }) 
                     />
                 </Form.Group>
                 <Form.Group controlId="formAddress2">
-                    <Form.Label>Address 2</Form.Label>
+                    <BoldFormLabel>Address 2</BoldFormLabel>
                     <Form.Control
                         type="text"
                         name="address2"
