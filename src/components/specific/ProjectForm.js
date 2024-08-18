@@ -14,6 +14,7 @@ const ProjectForm = () => {
         name: '',
         description: '',
         managedBy: null,
+        leadName: null,
         startDate: new Date(),
         endDate: new Date(),
         client: '',
@@ -72,6 +73,7 @@ const ProjectForm = () => {
         setFormData({
             ...formData,
             managedBy: selectedOption.value,
+            leadName: selectedOption.label,
         });
     };
 
@@ -91,6 +93,7 @@ const ProjectForm = () => {
                 endDate: moment(formData.endDate).tz('Africa/Nairobi'),
                 createdBy: 'currentUserId' // Replace with actual user ID
             };
+            console.log('Sent Form Data: ', formData);
             createProject(projectData).then(response => {
                 if (response) {
                     // Handle successful project creation (e.g., redirect, show a message)
