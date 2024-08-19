@@ -5,6 +5,7 @@ import { useParams } from 'react-router-dom';
 import { Container, Card, Button, ListGroup } from 'react-bootstrap';
 import { fetchProjectTeam, fetchUsers, addTeamMembers } from '../services/api';
 import AddTeamMembersModal from '../components/common/AddTeamMembersModal';
+import Loader from '../components/common/Loader.js'
 import '../assets/styles/ProjectTeam.css'; // Custom styles
 
 const ProjectTeam = () => {
@@ -46,7 +47,7 @@ const ProjectTeam = () => {
     };
 
     if (loading) {
-        return <div>Loading team members...</div>;
+        return <Loader />
     }
 
     return (

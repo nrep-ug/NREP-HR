@@ -5,6 +5,7 @@ import { useParams } from 'react-router-dom';
 import { Container, Card, Button, ListGroup } from 'react-bootstrap';
 import { fetchTaskDetails, fetchProjectTeam, fetchProjectTaskTeam, assignTaskMembers } from '../services/api';
 import AddTeamMembersModal from '../components/common/AddTeamMembersModal';
+import Loader from '../components/common/Loader.js'
 import '../assets/styles/TaskDetailsPage.css'; // Custom styles
 
 const TaskDetailsPage = () => {
@@ -55,7 +56,7 @@ const TaskDetailsPage = () => {
     };
 
     if (loading) {
-        return <div>Loading task details...</div>;
+        return <Loader />
     }
 
     return (

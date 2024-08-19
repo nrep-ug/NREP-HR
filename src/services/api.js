@@ -152,7 +152,6 @@ export const assignTaskMembers = async (projectID, taskID, members) => {
     }
 };
 
-//STARTING FROM HERE: Thinking of whether to also pass the project ID
 export const fetchProjectTaskTeam = async (projectID, taskID) => {
     try {
         const response = await fetch(`${serverUrl}/api/projects/${projectID}/tasks/${taskID}/members`);
@@ -162,4 +161,18 @@ export const fetchProjectTaskTeam = async (projectID, taskID) => {
         console.error('Error fetching task members:', error);
         return [];
     }
+};
+
+//AUTHENTICATION SERVICES
+export const signin = async (userID, password) => {
+    // Replace with your API call
+    const response = await fetch(`${serverUrl}/api/auth/signin`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ userID, password }), // Sending credentials in the body
+    });
+
+    return response;
 };

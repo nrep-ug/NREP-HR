@@ -4,6 +4,7 @@ import React, { useState, useEffect } from 'react';
 import { Card, Button, Row, Col, Container } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
 import { fetchProjects } from '../../services/api';
+import Loader from '../common/Loader.js'
 import '../../assets/styles/ProjectList.css'; // Custom styles
 
 const ProjectList = () => {
@@ -23,7 +24,7 @@ const ProjectList = () => {
     }, []);
 
     if (loading) {
-        return <div>Loading projects...</div>;
+        return <Loader />
     }
 
     const handleViewDetails = (projectID) => {

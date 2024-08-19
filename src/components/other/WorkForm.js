@@ -206,7 +206,7 @@ const WorkForm = () => {
                 <Image
                     src="/images/nrep-1.png"
                     fluid
-                    alt="Description of the image"
+                    alt="The National Renewable Energy Platform (NREP)"
                     style={{ width: '15rem', height: 'auto' }}
                 />
             </div>

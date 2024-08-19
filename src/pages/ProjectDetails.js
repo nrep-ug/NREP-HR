@@ -4,6 +4,7 @@ import React, { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { Container, Card, Button } from 'react-bootstrap';
 import { fetchProjectDetails } from '../services/api';
+import Loader from '../components/common/Loader.js'
 import '../assets/styles/ProjectDetails.css'; // Custom styles
 
 const ProjectDetails = () => {
@@ -22,7 +23,7 @@ const ProjectDetails = () => {
     }, [projectID]);
 
     if (loading) {
-        return <div>Loading project details...</div>;
+        return <Loader />
     }
 
     if (!project) {

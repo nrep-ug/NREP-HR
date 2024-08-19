@@ -5,6 +5,7 @@ import { useParams, Link } from 'react-router-dom';
 import { Container, Card, Button, ListGroup, Modal } from 'react-bootstrap';
 import { fetchProjectTasks } from '../services/api';
 import AddTaskForm from '../components/specific/AddTaskForm';
+import Loader from '../components/common/Loader.js'
 import '../assets/styles/ProjectTasksPage.css';
 
 const ProjectTasksPage = () => {
@@ -33,7 +34,7 @@ const ProjectTasksPage = () => {
     };
 
     if (loading) {
-        return <div>Loading tasks...</div>;
+        return <Loader />
     }
 
     return (

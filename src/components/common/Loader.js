@@ -7,9 +7,10 @@ import '../../assets/styles/Loader.css';
 const Loader = () => {
     return (
         <div className="loader-container">
-            <Spinner animation="border" role="status">
-                <span className="sr-only">Loading...</span>
-            </Spinner>
+            <Spinner animation="grow" variant="secondary" />
+            <Spinner animation="grow" variant="success" />
+            <Spinner animation="grow" variant="warning" />
+            <Spinner animation="grow" variant="info" />
         </div>
     );
 };
