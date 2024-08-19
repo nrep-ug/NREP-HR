@@ -3,37 +3,38 @@
 import React, { useState, useEffect } from 'react';
 import { Modal, Button, Form, ListGroup, Row, Col } from 'react-bootstrap';
 import Select from 'react-select';
-import { fetchUsers, addTeamMembers } from '../../services/api';
 
-const AddTeamMembersModal = ({ show, handleClose, projectID, onMembersAdded, existingMembers }) => {
-    const [users, setUsers] = useState([]);
+/** The `availableMembers` prop format
+const availableMembers = [
+    { value: 'value1', label: 'label1' },
+    { value: 'value2', label: 'label2' },
+    // ...other members
+];
+
+*/
+const AddTeamMembersModal = ({
+    show,
+    handleClose,
+    onSaveMembers,
+    existingMembers = [],
+    availableMembers = []
+}) => {
+
+    console.log('availableMembers: ', availableMembers);
+
     const [filteredUsers, setFilteredUsers] = useState([]);
     const [selectedMember, setSelectedMember] = useState(null);
     const [role, setRole] = useState('');
-    const [teamMembers, setTeamMembers] = useState([]);
+    const [teamMembers, setTeamMembers] = useState([]);  // No initialMembers prop
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
 
     useEffect(() => {
-        fetchUsers().then(data => {
-            const staffArray = data.documents;
-            const modifiedArray = staffArray.map((staff) => {
-                const fullName = `${staff.firstName} ${staff.middleName ? staff.middleName + ' ' : ''}${staff.surName}`.trim();
-                return {
-                    label: fullName,
-                    value: staff.staffID
-                };
-            });
-            setUsers(modifiedArray);
-        });
-    }, []);
-
-    useEffect(() => {
-        // Filter out users that are already part of the project team
+        // Filter out users that are already part of the existing members
         const existingMemberIDs = existingMembers.map(member => member.staffID);
-        const filtered = users.filter(user => !existingMemberIDs.includes(user.value));
+        const filtered = availableMembers.filter(user => !existingMemberIDs.includes(user.value));
         setFilteredUsers(filtered);
-    }, [users, existingMembers]);
+    }, [availableMembers, existingMembers]);
 
     const handleAddMember = () => {
         if (selectedMember && role.trim()) {
@@ -57,11 +58,10 @@ const AddTeamMembersModal = ({ show, handleClose, projectID, onMembersAdded, exi
         setLoading(true);
         setError(null);
         try {
-            await addTeamMembers(projectID, teamMembers);
-            onMembersAdded(teamMembers); // Update the parent component with the new members
+            await onSaveMembers(teamMembers);
             handleClose();
         } catch (err) {
-            setError('Failed to add members. Please try again.');
+            setError('Failed to save members. Please try again.');
             console.error(err);
         } finally {
             setLoading(false);

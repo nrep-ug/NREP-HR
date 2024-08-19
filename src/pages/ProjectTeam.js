@@ -3,27 +3,44 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { Container, Card, Button, ListGroup } from 'react-bootstrap';
-import { fetchProjectTeam } from '../services/api';
+import { fetchProjectTeam, fetchUsers, addTeamMembers } from '../services/api';
 import AddTeamMembersModal from '../components/common/AddTeamMembersModal';
 import '../assets/styles/ProjectTeam.css'; // Custom styles
 
 const ProjectTeam = () => {
     const { projectID } = useParams();
     const [teamMembers, setTeamMembers] = useState([]);
+    const [allUsers, setAllUsers] = useState([]);
     const [loading, setLoading] = useState(true);
     const [showAddMemberModal, setShowAddMemberModal] = useState(false);
 
     useEffect(() => {
-        fetchProjectTeam(projectID).then(data => {
-            setTeamMembers(data.members);
-            setLoading(false);
-        }).catch(error => {
-            console.error("Error fetching team members:", error);
-            setLoading(false);
-        });
+        const fetchTeamAndUsers = async () => {
+            try {
+                const teamData = await fetchProjectTeam(projectID);
+                console.log('ProjectID: ', projectID + ' Project Team: ', teamData);
+                setTeamMembers(teamData.members);
+
+                const userData = await fetchUsers();
+                const users = userData.documents.map(staff => ({
+                    value: staff.staffID,
+                    label: `${staff.firstName} ${staff.middleName ? staff.middleName + ' ' : ''}${staff.surName}`.trim()
+                }));
+                setAllUsers(users);
+
+            } catch (error) {
+                console.error("Error fetching data:", error);
+            } finally {
+                setLoading(false);
+            }
+        };
+
+        fetchTeamAndUsers();
     }, [projectID]);
 
-    const handleMembersAdded = (newMembers) => {
+    const handleSaveMembers = async (newMembers) => {
+        console.log('new members: ', newMembers);
+        await addTeamMembers(projectID, newMembers); // Save members via API
         const updatedMembers = [...teamMembers, ...newMembers];
         setTeamMembers(updatedMembers);
     };
@@ -61,9 +78,9 @@ const ProjectTeam = () => {
             <AddTeamMembersModal
                 show={showAddMemberModal}
                 handleClose={() => setShowAddMemberModal(false)}
-                projectID={projectID}
-                onMembersAdded={handleMembersAdded}
-                existingMembers={teamMembers} // Pass existing members to the modal
+                onSaveMembers={handleSaveMembers} // Pass save function
+                existingMembers={teamMembers} // Pass existing members to filter out
+                availableMembers={allUsers} // Pass all users to filter and select from
             />
         </Container>
     );
