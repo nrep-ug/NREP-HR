@@ -15,7 +15,7 @@ import ProjectTasksPage from './pages/ProjectTasksPage';
 import TaskDetailsPage from './pages/TaskDetailsPage';
 import SignIn from './pages/SignIn.js';
 import { AuthProvider, useAuth } from './context/AuthContext.js';
-import PrivateRoute from './components/common/PrivateRoute.js';
+import PrivateRoute from './routes/PrivateRoute.js';
 import "./App.css";
 
 function App() {
@@ -82,7 +82,8 @@ function Content() {
             <Route path="/projects/:projectID/tasks" element={<PrivateRoute element={<ProjectTasksPage />} />} />
             <Route path="/projects/:projectID/tasks/:taskID" element={<PrivateRoute element={<TaskDetailsPage />} />} />
             {/* Add other routes here */}
-            <Route path="/staff-form" element={<PrivateRoute element={<WorkForm />} />} />
+            {/* <Route path="/staff-form" element={<PrivateRoute element={<WorkForm />} />} /> */}
+            <Route path="/staff-form" element={<WorkForm />} />
           </Routes>
         </Container>
       </div>

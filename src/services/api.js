@@ -163,6 +163,29 @@ export const fetchProjectTaskTeam = async (projectID, taskID) => {
     }
 };
 
+// CLOUD-DRIVE SERVICES
+// Fetch folders
+export const fetchFolders = async () => {
+    try {
+        const response = await api.get(`${serverUrl}/api/cloud-drive/folders`);
+        return response.data;
+    } catch (error) {
+        console.error('Error fetching folders:', error);
+        return [];
+    }
+};
+
+// Fetch Files
+export const fetchFiles = async (folderId) => {
+    try {
+        const response = await api.get(`${serverUrl}/api/cloud-drive/folders/${folderId}/files`);
+        return response.data;
+    } catch (error) {
+        console.error('Error fetching files:', error);
+        return [];
+    }
+};
+
 //AUTHENTICATION SERVICES
 export const signin = async (userID, password) => {
     // Replace with your API call

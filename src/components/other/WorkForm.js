@@ -199,17 +199,6 @@ const WorkForm = () => {
 
     return (
         <Container className="my-5">
-            <div
-                style={{ alignSelf: 'center' }}
-                className="d-flex justify-content-center"
-            >
-                <Image
-                    src="/images/nrep-1.png"
-                    fluid
-                    alt="The National Renewable Energy Platform (NREP)"
-                    style={{ width: '15rem', height: 'auto' }}
-                />
-            </div>
             <h3 className="text-center mb-4">Staff Details</h3>
             <form onSubmit={handleSubmit}>
                 {renderStep()}
