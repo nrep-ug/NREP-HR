@@ -28,11 +28,11 @@ const ProjectList = () => {
     }
 
     const handleViewDetails = (projectID) => {
-        navigate(`/projects/${projectID}`);
+        navigate(`/project/${projectID}`);
     };
 
     return (
-        <Container>
+        <>
             <h1 className="mb-4">Projects</h1>
             <Row>
                 {projects.length > 0 ? (
@@ -57,7 +57,7 @@ const ProjectList = () => {
                     <p>No projects found.</p>
                 )}
             </Row>
-        </Container>
+        </>
     );
 };
 

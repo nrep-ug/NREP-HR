@@ -3,10 +3,10 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { Container, Card, Button, ListGroup } from 'react-bootstrap';
-import { fetchProjectTeam, fetchUsers, addTeamMembers } from '../services/api';
-import AddTeamMembersModal from '../components/common/AddTeamMembersModal';
-import Loader from '../components/common/Loader.js'
-import '../assets/styles/ProjectTeam.css'; // Custom styles
+import { fetchProjectTeam, fetchUsers, addTeamMembers } from '../../services/api';
+import AddTeamMembersModal from '../../components/common/AddTeamMembersModal';
+import Loader from '../../components/common/Loader.js'
+import '../../assets/styles/ProjectTeam.css'; // Custom styles
 
 const ProjectTeam = () => {
     const { projectID } = useParams();
@@ -51,7 +51,7 @@ const ProjectTeam = () => {
     }
 
     return (
-        <Container>
+        <>
             <h1 className="mb-4">Project Team</h1>
             <Card>
                 <Card.Body>
@@ -83,7 +83,7 @@ const ProjectTeam = () => {
                 existingMembers={teamMembers} // Pass existing members to filter out
                 availableMembers={allUsers} // Pass all users to filter and select from
             />
-        </Container>
+        </>
     );
 };
 

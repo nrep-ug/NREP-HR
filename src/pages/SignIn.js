@@ -33,7 +33,7 @@ const SignIn = () => {
     };
 
     return (
-        <Container className="d-flex justify-content-center align-items-center" style={{ height: '100vh' }}>
+        <div className="d-flex justify-content-center align-items-center" style={{ height: '100vh' }}>
             <Row>
                 <Col>
                     <h2>Sign In</h2>
@@ -65,7 +65,7 @@ const SignIn = () => {
                     </Form>
                 </Col>
             </Row>
-        </Container>
+        </div>
     );
 };
 

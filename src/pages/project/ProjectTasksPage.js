@@ -3,10 +3,10 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { Container, Card, Button, ListGroup, Modal } from 'react-bootstrap';
-import { fetchProjectTasks } from '../services/api';
-import AddTaskForm from '../components/specific/AddTaskForm';
-import Loader from '../components/common/Loader.js'
-import '../assets/styles/ProjectTasksPage.css';
+import { fetchProjectTasks } from '../../services/api.js';
+import AddTaskForm from '../../components/specific/AddTaskForm.js';
+import Loader from '../../components/common/Loader.js'
+import '../../assets/styles/ProjectTasksPage.css';
 
 const ProjectTasksPage = () => {
     const { projectID } = useParams();
@@ -38,7 +38,7 @@ const ProjectTasksPage = () => {
     }
 
     return (
-        <Container>
+        <>
             <h1 className="mb-4">Project Tasks</h1>
             <Card>
                 <Card.Body>
@@ -46,7 +46,7 @@ const ProjectTasksPage = () => {
                         {tasks.length > 0 ? (
                             tasks.map((task) => (
                                 <ListGroup.Item key={task.taskID}>
-                                    <Link to={`/projects/${projectID}/tasks/${task.taskID}`}>
+                                    <Link to={`/project/${projectID}/tasks/${task.taskID}`}>
                                         <strong>{task.name}</strong>
                                     </Link>
                                     <br />
@@ -75,7 +75,7 @@ const ProjectTasksPage = () => {
                     <AddTaskForm projectID={projectID} onTaskCreated={handleTaskCreated} />
                 </Modal.Body>
             </Modal>
-        </Container>
+        </>
     );
 };
 

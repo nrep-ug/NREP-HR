@@ -1,17 +1,20 @@
-// Routes.js
 import React from 'react';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import Home from '../pages/Home';
+import { Route, Routes as RouterRoutes } from 'react-router-dom';
+import SignIn from '../pages/SignIn';
+import WorkForm from '../components/other/WorkForm';
+import PrivateRoute from './PrivateRoute';
 import CloudDriveRoutes from './CloudDriveRoutes';
+import ProjectRoutes from './ProjectRoutes';
 
 const Routes = () => (
-    <Router>
-        <Switch>
-            <Route path="/" component={Home} exact />
-            <CloudDriveRoutes />
-            {/* Other routes */}
-        </Switch>
-    </Router>
+  <RouterRoutes>
+    <Route path="/sign-in" element={<SignIn />} />
+    <Route path="/project/*" element={<ProjectRoutes />} />
+    <Route path="/staff-form" element={<WorkForm />} />
+    {/* Cloud Drive Routes */}
+    <Route path="/cloud-drive/*" element={<CloudDriveRoutes />} />
+    {/* Add other routes here */}
+  </RouterRoutes>
 );
 
 export default Routes;

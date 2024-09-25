@@ -1,9 +1,11 @@
 // CloudDrive.js
 import React, { useState } from 'react';
-import CreateDirectoryModal from '../components/cloud-drive/CreateDirectoryModal';
+import CreateDirectoryModal from '../../components/cloud-drive/CreateDirectoryModal.js';
 import { Button } from 'react-bootstrap';
+import { usersList } from '../../utils/staticUsers.js';
 
 const CloudDrive = () => {
+    console.log(usersList);
     const [showCreateModal, setShowCreateModal] = useState(false);
     const [directories, setDirectories] = useState([]);
 

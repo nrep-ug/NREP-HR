@@ -3,10 +3,10 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { Container, Card, Button, ListGroup } from 'react-bootstrap';
-import { fetchTaskDetails, fetchProjectTeam, fetchProjectTaskTeam, assignTaskMembers } from '../services/api';
-import AddTeamMembersModal from '../components/common/AddTeamMembersModal';
-import Loader from '../components/common/Loader.js'
-import '../assets/styles/TaskDetailsPage.css'; // Custom styles
+import { fetchTaskDetails, fetchProjectTeam, fetchProjectTaskTeam, assignTaskMembers } from '../../services/api.js';
+import AddTeamMembersModal from '../../components/common/AddTeamMembersModal.js';
+import Loader from '../../components/common/Loader.js'
+import '../../assets/styles/TaskDetailsPage.css'; // Custom styles
 
 const TaskDetailsPage = () => {
     const { projectID, taskID } = useParams();
@@ -60,7 +60,7 @@ const TaskDetailsPage = () => {
     }
 
     return (
-        <Container>
+        <>
             <h1 className="mb-4">{task.name}</h1>
             <Card>
                 <Card.Body>
@@ -96,7 +96,7 @@ const TaskDetailsPage = () => {
                 existingMembers={assignedMembers} // Pass existing task members to prevent re-assigning
                 availableMembers={teamMembers} // Pass project team members to filter the dropdown
             />
-        </Container>
+        </>
     );
 };
 

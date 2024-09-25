@@ -1,13 +1,14 @@
-// src/pages/ProjectDetails.js
+// src/pages/project/ProjectDetails.js
 
 import React, { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { Container, Card, Button } from 'react-bootstrap';
-import { fetchProjectDetails } from '../services/api';
-import Loader from '../components/common/Loader.js'
-import '../assets/styles/ProjectDetails.css'; // Custom styles
+import { fetchProjectDetails } from '../../services/api.js';
+import Loader from '../../components/common/Loader.js'
+import '../../assets/styles/ProjectDetails.css'; // Custom styles
 
 const ProjectDetails = () => {
+    console.log('Project Details Page')
     const { projectID } = useParams();
     const [project, setProject] = useState(null);
     const [loading, setLoading] = useState(true);
@@ -31,7 +32,7 @@ const ProjectDetails = () => {
     }
 
     return (
-        <Container>
+        <>
             <Card>
                 <Card.Body>
                     <Card.Title>{project.name}</Card.Title>
@@ -43,15 +44,15 @@ const ProjectDetails = () => {
                         <strong>End Date:</strong> {new Date(project.endDate).toLocaleDateString()} <br />
                         <strong>Fund Source:</strong> {project.fundSource} <br />
                     </Card.Text>
-                    <Button variant="success" as={Link} to={`/projects/${projectID}/team`}>
+                    <Button variant="success" as={Link} to={`/project/${projectID}/team`}>
                         View Project Team
                     </Button>{' '}
-                    <Button variant="warning" as={Link} to={`/projects/${projectID}/tasks`}>
+                    <Button variant="warning" as={Link} to={`/project/${projectID}/tasks`}>
                         View Project Tasks
                     </Button>
                 </Card.Body>
             </Card>
-        </Container>
+        </>
     );
 };
 

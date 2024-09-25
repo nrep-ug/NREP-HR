@@ -47,6 +47,7 @@ export const fetchProjectDetails = async (projectID) => {
     try {
         const response = await fetch(`${serverUrl}/api/projects/${projectID}`);
         const data = await response.json();
+        console.log('Project Details: ',data)
         return data;
     } catch (error) {
         console.error('Error fetching project details:', error);
@@ -167,7 +168,7 @@ export const fetchProjectTaskTeam = async (projectID, taskID) => {
 // Fetch folders
 export const fetchFolders = async () => {
     try {
-        const response = await api.get(`${serverUrl}/api/cloud-drive/folders`);
+        const response = await fetch(`${serverUrl}/api/cloud-drive/folders`);
         return response.data;
     } catch (error) {
         console.error('Error fetching folders:', error);
@@ -178,7 +179,7 @@ export const fetchFolders = async () => {
 // Fetch Files
 export const fetchFiles = async (folderId) => {
     try {
-        const response = await api.get(`${serverUrl}/api/cloud-drive/folders/${folderId}/files`);
+        const response = await fetch(`${serverUrl}/api/cloud-drive/folders/${folderId}/files`);
         return response.data;
     } catch (error) {
         console.error('Error fetching files:', error);
@@ -196,6 +197,8 @@ export const signin = async (userID, password) => {
         },
         body: JSON.stringify({ userID, password }), // Sending credentials in the body
     });
+
+    console.log('Sign in data: ', response)
 
     return response;
 };

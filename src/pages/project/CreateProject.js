@@ -1,14 +1,14 @@
-// src/pages/CreateProject.js
+// src/pages/project/CreateProject.js
 
 import React from 'react';
-import ProjectForm from '../components/specific/ProjectForm';
+import ProjectForm from '../../components/specific/ProjectForm.js';
 
 const CreateProject = () => {
     return (
-        <div className="container">
+        <>
             <h1>Create a New Project</h1>
             <ProjectForm />
-        </div>
+        </>
     );
 };
 
